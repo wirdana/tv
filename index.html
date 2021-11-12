@@ -1,74 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <title>videojs-http-source-selector Demo</title>
-  <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
-  <!--<link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">-->
-  <link href="dist/videojs-http-source-selector.css" rel="stylesheet">
+    <meta charset=utf-8 />
+    <title>Watch TV Anywhere And Anytime</title>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </head>
+
 <body>
-  <title>videojs-http-source-selector Demo</title>
-  <video id="videojs-http-source-selector-player" width="1280" height="720" class="video-js vjs-default-skin" controls>
-    <source src="https://d2s97x1gdf3esf.cloudfront.net/out/v1/c1c8f8c23f4e40f089a96ebda156816a/index.m3u8" type='application/x-mpegURL'>
-  </video>
-  Stream URL:
-  <input type="text" id="streamURL" value="https://d2s97x1gdf3esf.cloudfront.net/out/v1/c1c8f8c23f4e40f089a96ebda156816a/index.m3u8" size="65">
-  <button onClick="loadStream()">Load</button>
-<!--   <br/>
-  Caption1 URL:
-  <input type="text" id="caption1URL" value="https://crackle-mediaconvert.s3.amazonaws.com/assets/thesonata/HLS/captions/thesonata_aiml.vtt" size="65">
-  <button onClick="loadCaption1()">Load Caption</button>
-  <br/>
-  Caption2 URL:
-  <input type="text" id="caption2URL" value="https://crackle-mediaconvert.s3.amazonaws.com/assets/thesonata/HLS/captions/thesonata_3play.vtt" size="65">
-  <button onClick="loadCaption2()">Load Caption</button> -->
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
 
-  <!--<script src="node_modules/video.js/dist/video.js"></script>-->
-  <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
-  <script src="dist/videojs-contrib-quality-levels.js"></script>
-  <script src="dist/videojs-http-source-selector.js"></script>
-  <script>
-    (function(window, videojs) {
-      var player = window.player = videojs('videojs-http-source-selector-player');
-      player.httpSourceSelector();
-      //Load stream from query param /?stream=MYHLS_STREAM_URL_GOES_HERE
-      var queryParamStream = getQueryString('stream');
-      if(queryParamStream !== null)
-      {
-        document.getElementById("streamURL").value = queryParamStream;
-        player.src({ type: "application/x-mpegURL", src: document.getElementById("streamURL").value });
-      }
-    }(window, window.videojs));
+    <!-- data-setup='{}' -->
+    <center>
+        <video id='a' class="video-js vjs-big-play-centered" width="1350" height="635">
+            <source type="application/x-mpegURL"
+                src="https://d2s97x1gdf3esf.cloudfront.net/out/v1/c1c8f8c23f4e40f089a96ebda156816a/index.m3u8">
+        </video>
+    </center>
 
-    function loadStream(){
-      console.log("Change stream to : "+document.getElementById("streamURL").value );
-      player.src({ type: "application/x-mpegURL", src: document.getElementById("streamURL").value });
-    }
+    <script src="//path/to/video.min.js"></script>
+    <script src="//path/to/videojs-http-source-selector.min.js"></script>
+    <script src="//path/to/videojs-contrib-quality-levels.min.js"></script>
 
-    function loadCaption1(){
-      console.log("Add caption: "+document.getElementById("caption1URL").value );
-      player.addRemoteTextTrack({src: document.getElementById("caption1URL").value, label: 'Caption 1'}, false);
-    }
+    <script>
+        var options =
+        {
+            plugins: {
+                httpSourceSelector:
+                {
+                    default: 'auto',
+                }
+            }
+        };
 
-    function loadCaption2(){
-      console.log("Add caption: "+document.getElementById("caption2URL").value );
-      player.addRemoteTextTrack({src: document.getElementById("caption2URL").value, label: 'Caption 2'}, false);
-    }
+        var player = videojs('a', {
+            "controls": true,
+            "autoplay": true,
+            //  playbackRates: [0.5, 1, 1.5],
 
-    /**
-      * Get the value of a querystring
-      * @param  {String} field The field to get the value of
-      * @param  {String} url   The URL to get the value from (optional)
-      * @return {String}       The field value
-      */
-    function getQueryString ( field, url )
-    {
-      var href = url ? url : window.location.href;
-      var reg = new RegExp( '[?&]' + field + '=([^]*)', 'i' );
-      var string = reg.exec(href);
-      return string ? string[1] : null;
-    }
-  </script>
+        });
+        player.httpSourceSelector();
+        var videojs = require('video.js');
+        require('videojs-contrib-quality-levels');
+        require('videojs-http-source-selector');
+
+        var player = videojs('a');
+
+        player.httpSourceSelector();
+        require(['video.js', 'videojs-contrib-quality-levels', 'videojs-http-source-selector'], function (videojs) {
+            var player = videojs('a');
+
+            player.httpSourceSelector();
+        });
+    </script>
 </body>
 </html>
