@@ -1,59 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset=utf-8 />
-    <title>Watch TV Anywhere And Anytime</title>
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
-    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=auto, initial-scale=1.0">
+	<title>Free Watching TV</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script data-cfasync="false" src="http://jwpsrv.com/library/SakQCEfSEeOHhRIxOQfUww.js"></script>
 </head>
 
 <body>
-    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+	<div id="playerjxJRqLMFuJaA_wrapper" style="position: relative; display: block; width: 100%; height: 100%;">
+		<a id="beforeswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash start"
+			style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
+			data-related-swf="playerjxJRqLMFuJaA"></a>
 
-    <!-- data-setup='{}' -->
-    <center>
-        <video id='a' class="video-js vjs-big-play-centered" width="1350" height="635">
-            <source type="application/x-mpegURL"
-                src="https://d33j155pv2xyba.cloudfront.net/live/eds/MNCTV_2021/live_fta/MNCTV_2021.m3u8">
-        </video>
-    </center>
+		<object type="application/x-shockwave-flash" data="http://p.jwpcdn.com/6/12/jwplayer.flash.swf" width="100%"
+			height="100%" bgcolor="#000000" id="playerjxJRqLMFuJaA" name="playerjxJRqLMFuJaA"
+			class="jwswf swfPrev-beforeswfanchor0 swfNext-afterswfanchor0" tabindex="0">
+			<param name="allowfullscreen" value="true">
+			<param name="allowscriptaccess" value="always">
+			<param name="seamlesstabbing" value="true">
+			<param name="wmode" value="opaque">
+		</object>
 
-    <script src="//path/to/video.min.js"></script>
-    <script src="//path/to/videojs-http-source-selector.min.js"></script>
-    <script src="//path/to/videojs-contrib-quality-levels.min.js"></script>
+		<a id="afterswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash end"
+			style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
+			data-related-swf="playerjxJRqLMFuJaA"></a>
 
-    <script>
-        var options =
-        {
-            plugins: {
-                httpSourceSelector:
-                {
-                    default: 'auto',
-                }
-            }
-        };
+		<div id="playerjxJRqLMFuJaA_aspect" style="display: none;">
+		</div>
 
-        var player = videojs('a', {
-            "controls": true,
-            "autoplay": true,
-            //  playbackRates: [0.5, 1, 1.5],
+		<div id="playerjxJRqLMFuJaA_jwpsrv" style="position: absolute; top: 0px; z-index: 10;">
+			<div class="afs_ads" style="width: 1px; height: 1px; position: absolute; background: transparent;">&nbsp;
+			</div>
+		</div>
 
-        });
-        player.httpSourceSelector();
-        var videojs = require('video.js');
-        require('videojs-contrib-quality-levels');
-        require('videojs-http-source-selector');
+		<script data-cfasync="false" type="text/javascript">
+			jwplayer('playerjxJRqLMFuJaA').setup({
+				file: 'https://d33j155pv2xyba.cloudfront.net/live/eds/MNCTV_2021/live_fta/MNCTV_2021.m3u8',
+				// file: 'https://d2s97x1gdf3esf.cloudfront.net/out/v1/c1c8f8c23f4e40f089a96ebda156816a/index_9.m3u8',
+				aboutlink: 'http://skysports.com',
+				controls: 'true',
+				title: 'Football Live Streamings.Com',
+				width: '100%',
+				height: '490',
+				stretching: 'uniform',
+				autostart: 'true',
+				primary: 'flash',
+				skin: 'vapor',
+				androidhls: 'true',
+			});
+		</script>
 
-        var player = videojs('a');
-
-        player.httpSourceSelector();
-        require(['video.js', 'videojs-contrib-quality-levels', 'videojs-http-source-selector'], function (videojs) {
-            var player = videojs('a');
-
-            player.httpSourceSelector();
-        });
-    </script>
 </body>
+
+
 </html>
