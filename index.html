@@ -1,50 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Video.js + hls.js</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- https://getbootstrap.com -->
-    <link href="https://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet"><!-- https://videojs.com -->
-    <style type="text/css">
-        .video-js {
-            font-size: 1rem;
-        }
-    </style>
+   <meta charset=utf-8 />
+   <title>videojs-quality-selector Demo</title>
+   <link href="https://unpkg.com/video.js@6.1.0/dist/video-js.css" rel="stylesheet">
+   <script src="https://unpkg.com/video.js@6.1.0/dist/video.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+   <link href="//unpkg.com/silvermine-videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+    <script src="//unpkg.com/silvermine-videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
 </head>
+<body>
+   <h1>Demo of <code>videojs-quality-selector</code></h1>
 
-<body class="bg-light">
-    <div class="container">
-        <div class="my-5 embed-responsive embed-responsive-16by9">
-            <video id="video" class="embed-responsive-item video-js vjs-default-skin" width="640" height="360" autoplay
-                controls></video>
-        </div>
-        <div class="row justify-content-around align-items-center">
-            <a class="btn btn-primary bg-lg" href="https://github.com/halibegic/hls" target="blank">GitHub</a>
-        </div>
-    </div>
-    <script src="https://vjs.zencdn.net/5.19.2/video.js"></script><!-- https://videojs.com -->
-    <script src="https://halibegic.github.io/hls/js/hls.min.js?v=v0.9.1"></script>
-    <!-- https://github.com/video-dev/hls.js -->
-    <script src="https://halibegic.github.io/hls/js/videojs5-hlsjs-source-handler.min.js?v=0.3.1"></script>
-    <!-- https://github.com/streamroot/videojs-hlsjs-plugin -->
-    <script src="https://halibegic.github.io/hls/js/vjs-quality-picker.js?v=v0.0.2"></script>
-    <!-- https://github.com/streamroot/videojs-quality-picker -->
-    <script>
-        var player = videojs('video');
+   <video id="video_1" class="video-js vjs-default-skin vjs-fluid vjs-big-play-centered" controls preload="auto" data-setup='{}'>
+     <source src="https://fta.rctiplus.id/live/eds/MNCTV_2021/live_fta/MNCTV_2021.m3u8" type="application/x-mpegURL" label="MNCTV">
+      <source src="https://fta.rctiplus.id/live/eds/RCTI_2021/live_fta/RCTI_2021.m3u8" type="application/x-mpegURL" label="RCTI" selected="true">
+   </video>
 
-        player.qualityPickerPlugin();
-
-        player.src({
-            // src: 'https://media.bleacherreport.com/video/upload/f_m3u8/sp_hd/v1552942145/ywoka6hs8ph7ibxdqf4i.m3u8',
-            src: 'https://video.detik.com/transtv/smil:transtv.smil/playlist.m3u8',
-            type: 'application/x-mpegURL'
-        });
-
-        player.play();
-    </script>
+   <script>
+      videojs("video_1", {}, function() {
+         var player = this;
+         player.controlBar.addChild('QualitySelector');
+      });
+   </script>
 </body>
-
 </html>
