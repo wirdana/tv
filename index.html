@@ -2,77 +2,49 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=auto, initial-scale=1.0">
-	<title>Free Watching TV</title>
-	<style>
-		.video {
-			margin-top: 20px;
-		}
-	</style>
-	<script data-cfasync="false" src="http://jwpsrv.com/library/SakQCEfSEeOHhRIxOQfUww.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Video.js + hls.js</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- https://getbootstrap.com -->
+    <link href="https://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet"><!-- https://videojs.com -->
+    <style type="text/css">
+        .video-js {
+            font-size: 1rem;
+        }
+    </style>
 </head>
 
-<body>
-	<center>
-		<!-- <script src="https://content.jwplatform.com/players/UVQWMA4o-aBCdE12G.js"></script>
-		<div id="playerjxJRqLMFuJaA_wrapper" style="position: absolute; display: block; width: 800px; height: 500%;">
-			<a id="beforeswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash start"
-				style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
-				data-related-swf="playerjxJRqLMFuJaA"></a> -->
+<body class="bg-light">
+    <div class="container">
+        <div class="my-5 embed-responsive embed-responsive-16by9">
+            <video id="video" class="embed-responsive-item video-js vjs-default-skin" width="640" height="360" autoplay
+                controls></video>
+        </div>
+        <div class="row justify-content-around align-items-center">
+            <a class="btn btn-primary bg-lg" href="https://github.com/halibegic/hls" target="blank">GitHub</a>
+        </div>
+    </div>
+    <script src="https://vjs.zencdn.net/5.19.2/video.js"></script><!-- https://videojs.com -->
+    <script src="https://halibegic.github.io/hls/js/hls.min.js?v=v0.9.1"></script>
+    <!-- https://github.com/video-dev/hls.js -->
+    <script src="https://halibegic.github.io/hls/js/videojs5-hlsjs-source-handler.min.js?v=0.3.1"></script>
+    <!-- https://github.com/streamroot/videojs-hlsjs-plugin -->
+    <script src="https://halibegic.github.io/hls/js/vjs-quality-picker.js?v=v0.0.2"></script>
+    <!-- https://github.com/streamroot/videojs-quality-picker -->
+    <script>
+        var player = videojs('video');
 
-		<div class="video">
-			<object type="application/x-shockwave-flash" data="http://p.jwpcdn.com/6/12/jwplayer.flash.swf" width="100%"
-			height="100%" bgcolor="#000000" id="playerjxJRqLMFuJaA" name="playerjxJRqLMFuJaA"
-			class="jwswf swfPrev-beforeswfanchor0 swfNext-afterswfanchor0" tabindex="0">
-			<!-- <param name="allowfullscreen" value="true">
-			<param name="allowscriptaccess" value="always">
-			<param name="seamlesstabbing" value="true">
-			<param name="wmode" value="opaque"> -->
-		</object>
-		</div>
+        player.qualityPickerPlugin();
 
-		<a id="afterswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash end"
-			style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
-			data-related-swf="playerjxJRqLMFuJaA"></a>
+        player.src({
+            // src: 'https://media.bleacherreport.com/video/upload/f_m3u8/sp_hd/v1552942145/ywoka6hs8ph7ibxdqf4i.m3u8',
+            src: 'https://video.detik.com/transtv/smil:transtv.smil/playlist.m3u8',
+            type: 'application/x-mpegURL'
+        });
 
-		<!-- <div id="playerjxJRqLMFuJaA_aspect" style="display: none;">
-		</div> -->
-
-		<!-- <div id="playerjxJRqLMFuJaA_jwpsrv" style="position: absolute; top: 0px; z-index: 10;">
-			<div class="afs_ads" style="width: 1px; height: 1px; position: absolute; background: transparent;">
-				&nbsp;
-			</div>
-		</div> -->
-
-		<script data-cfasync="false" type="text/javascript">
-			jwplayer('playerjxJRqLMFuJaA').setup({
-				file: 'https://d35d0ifx19oopq.cloudfront.net/live/eds/RCTI_2021/live_fta/RCTI_2021.m3u8',
-				// file: 'https://d33j155pv2xyba.cloudfront.net/live/eds/MNCTV_2021/live_fta/MNCTV_2021.m3u8',
-				type: 'hls',
-				aboutlink: 'https://wirdana.com',
-				// abouttext: 'Powered by WIRDANA',
-				controls: 'true',
-				title: 'WIR Tv',
-				width: '600px',
-				height: '390px',
-				stretching: 'exactfit',
-				autostart: 'true',
-				primary: 'flash',
-				skin: 'rgba(255,255,255,0.8)',
-				androidhls: 'true',
-				horizontalVolumeSlider: 'true',
-				playbackRateControls: 'true',
-				hlsjsdefault: 'true',
-				loadAndParseHlsMetadata: 'true',
-				preload: 'metadata',
-				sharing: {
-					sites: ["reddit", "facebook", "twitter"]
-				}
-			});
-		</script>
-	</center>
+        player.play();
+    </script>
 </body>
 
 </html>
