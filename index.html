@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Sample Page</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.6.6/video-js.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.6.6/video.min.js"></script>
     <script src="https://player.live-video.net/1.5.1/amazon-ivs-videojs-tech.min.js"></script>
     <script src="https://player.live-video.net/1.5.1/amazon-ivs-quality-plugin.min.js"></script>
+    
     <style>
         html,
 body {
@@ -41,12 +41,30 @@ body {
   box-shadow: 0 10px 60px rgba(0, 0, 0, 0.15);
 }
 
+.live-pill {
+  height: 35px;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  color: #fff;
+  /* text-transform: uppercase; */
+  font-size: 25px;
+  padding: 0 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  z-index: 2;
+}
+
 video {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+.video-js {
+  font-size: 90px;
+  color: red;
 }
 
 /* .timed-metadata {
@@ -111,14 +129,12 @@ video {
 <body>
     <div class="app">
         <div class="video-wrapper">
-            <video id="amazon-ivs-videojs" class="video-js vjs-fluid vjs-big-play-centered" controls autoplay
-                playsinline controlProgres></video>
-            <!-- <div class="timed-metadata"></div> -->
+            <span class="live-pill">WIR TV</span>
+            <video id="amazon-ivs-videojs" class="video-js vjs-fluid vjs-big-play-centered" controls autoplayplaysinline></video>
         </div>
     </div>
     <script>
-        const playbackUrl =
-    "https://fta.rctiplus.id/live/eds/MNCTV_2021/live_fta/MNCTV_2021.m3u8";
+        const playbackUrl ="https://fta.rctiplus.id/live/eds/RCTI_2021/live_fta/RCTI_2021.m3u8";
 
 // Initialize player
 (function () {
@@ -130,11 +146,26 @@ video {
     const videoJSPlayer = videojs("amazon-ivs-videojs", {
         techOrder: ["AmazonIVS"],
         controlBar: {
-            playToggle: {
-                replay: false
-            }, // Hides the replay button for VOD
-            pictureInPictureToggle: false // Hides the PiP button
-        }
+            playToggle: {replay: true}, // Hides the replay button for VOD
+            pictureInPictureToggle: false}, // Hides the PiP button
+            // playbackRates: [ 0.5, 0.75,1, 1.25, 1.5],
+
+            html5: {
+                nativeAudioTracks: true,
+                nativeVideoTracks: true,
+                nativeTextTracks: true,
+                hls: {
+                    allowSeeksWithinUnsafeLiveWindow: true,
+                    overrideNative: !videojs.browser.IS_ANY_SAFARI,
+                },
+                vhs: {
+                    allowSeeksWithinUnsafeLiveWindow: true,
+                    overrideNative: !videojs.browser.IS_ANY_SAFARI,
+                },
+            },
+            // liveui: !videojs.browser.IS_ANY_SAFARI,
+            // liveTracker: !videojs.browser.IS_ANY_SAFARI,
+            // crossorigin: 'anonymous',
     });
 
     // Use the player API once the player instance's ready callback is fired
@@ -188,7 +219,7 @@ video {
         videoJSPlayer.enableIVSQualityPlugin();
 
         // Set volume and play default stream
-        videoJSPlayer.volume(0.5);
+        videoJSPlayer.volume(100);
         videoJSPlayer.src(playbackUrl);
     };
 
