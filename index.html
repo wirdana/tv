@@ -1,78 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+  </head>
+  <body>
+ 
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=auto, initial-scale=1.0">
-	<title>Free Watching TV</title>
-	<style>
-		.video {
-			margin-top: 20px;
-		}
-	</style>
-	<script data-cfasync="false" src="http://jwpsrv.com/library/SakQCEfSEeOHhRIxOQfUww.js"></script>
-</head>
+      <video
+        id="vid1"
+        class="video-js vjs-default-skin vjs-fluid"
+        poster="https://pngimg.com/uploads/chevrolet/%D1%81hevrolet_PNG77.png"
+        width="640"
+        height="360"
+        controls
+        autoplay
+        preload="none"
+        data-setup='{ "techOrder": ["html5", "flash", "youtube"], 
+  "sources": [{ "type": "application/x-mpegURL", "src": "https://fta.rctiplus.id/live/eds/RCTI_2021/live_fta/RCTI_2021.m3u8"}]}'
+      ></video>
 
-<body>
-	<center>
-		<!-- <script src="https://content.jwplatform.com/players/UVQWMA4o-aBCdE12G.js"></script>
-		<div id="playerjxJRqLMFuJaA_wrapper" style="position: absolute; display: block; width: 800px; height: 500%;">
-			<a id="beforeswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash start"
-				style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
-				data-related-swf="playerjxJRqLMFuJaA"></a> -->
+      
 
-		<div class="video">
-			<object type="application/x-shockwave-flash" data="http://p.jwpcdn.com/6/12/jwplayer.flash.swf" width="100%"
-			height="100%" bgcolor="#000000" id="playerjxJRqLMFuJaA" name="playerjxJRqLMFuJaA"
-			class="jwswf swfPrev-beforeswfanchor0 swfNext-afterswfanchor0" tabindex="0">
-			<!-- <param name="allowfullscreen" value="true">
-			<param name="allowscriptaccess" value="always">
-			<param name="seamlesstabbing" value="true">
-			<param name="wmode" value="opaque"> -->
-		</object>
-		</div>
-
-		<a id="afterswfanchor0" href="#playerjxJRqLMFuJaA" tabindex="0" title="Flash end"
-			style="border:0;clip:rect(0 0 0 0);display:block;height:1px;margin:-1px;outline:none;overflow:hidden;padding:0;position:absolute;width:1px;"
-			data-related-swf="playerjxJRqLMFuJaA"></a>
-
-		<!-- <div id="playerjxJRqLMFuJaA_aspect" style="display: none;">
-		</div> -->
-
-		<!-- <div id="playerjxJRqLMFuJaA_jwpsrv" style="position: absolute; top: 0px; z-index: 10;">
-			<div class="afs_ads" style="width: 1px; height: 1px; position: absolute; background: transparent;">
-				&nbsp;
-			</div>
-		</div> -->
-
-		<script data-cfasync="false" type="text/javascript">
-			jwplayer('playerjxJRqLMFuJaA').setup({
-				file: 'https://fta.rctiplus.id/live/eds/GTV2021/live_fta/GTV2021.m3u8',
-				// file: 'http://stream.spacetoon.com:1935/live/stchannel/smil:livesmil.smil/playlist.m3u8',
-				type: 'hls',
-				aboutlink: 'https://wirdana.com',
-				// abouttext: 'Powered by WIRDANA',
-				controls: 'true',
-				title: 'WIR Tv',
-				width: '600px',
-				height: '390px',
-				stretching: 'exactfit',
-				autostart: 'true',
-				primary: 'flash',
-				skin: 'rgba(255,255,255,0.8)',
-				androidhls: 'true',
-				horizontalVolumeSlider: 'true',
-				playbackRateControls: 'true',
-				hlsjsdefault: 'true',
-				loadAndParseHlsMetadata: 'true',
-				preload: 'metadata',
-				sharing: {
-					sites: ["reddit", "facebook", "twitter"]
-				}
-			});
-		</script>
-	</center>
-</body>
-
-</html>
+      <ul id="vidlink"> <button><a id="myLink" title="Click video"
+            href="http://jplayer.org/video/m4v/Incredibles_Teaser.m4v">Play .M4V</a></button>
+        
+          <a id="myLink" title="Click video"            href="//assets3.ign.com/videos/zencoder/2016/06/15/640/7080c56a76e2b74ec8ecfe4c224441d4-500000-1466028542-w.mp4" >Play .MP4</a
+          >
+        </li>
+        <li>
+          <a
+            id="myLink"
+            title="Click video"
+            href="https://www.youtube.com/watch?v=kkGeOWYOFoA"
+            >Play Youtube</a
+          >
+        </li>
+        <li>
+          <a
+            id="myLink"
+            title="Click video"
+            href="https://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-manifest.mpd"
+            >Play Dash (.mpd)</a
