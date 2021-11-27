@@ -1,39 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Video.js + hls.js</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"><!-- https://getbootstrap.com -->
+    <link href="https://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet"><!-- https://videojs.com -->
+    <style type="text/css">
+        .video-js {
+            font-size: 1rem;
+        }
+    </style>
   </head>
-  <body>
- 
+  <body class="bg-light">
+    <div class="container">
+        <div class="my-5 embed-responsive embed-responsive-16by9">
+            <video id="video" class="embed-responsive-item video-js vjs-default-skin" width="640" height="360" autoplay controls></video>
+        </div>
+        <div class="row justify-content-around align-items-center">
+            <a class="btn btn-primary bg-lg" href="https://github.com/halibegic/hls" target="blank">GitHub</a>
+        </div>
+    </div>
+    <script src="https://vjs.zencdn.net/5.19.2/video.js"></script><!-- https://videojs.com -->
+    <script src="https://halibegic.github.io/hls/js/hls.min.js?v=v0.9.1"></script><!-- https://github.com/video-dev/hls.js -->
+    <script src="https://halibegic.github.io/hls/js/videojs5-hlsjs-source-handler.min.js?v=0.3.1"></script><!-- https://github.com/streamroot/videojs-hlsjs-plugin -->
+    <script src="https://halibegic.github.io/hls/js/vjs-quality-picker.js?v=v0.0.2"></script><!-- https://github.com/streamroot/videojs-quality-picker -->
+    <script>
+        var player = videojs('video');
 
-      <video
-        id="vid1"
-        class="video-js vjs-default-skin vjs-fluid"
-        poster="https://pngimg.com/uploads/chevrolet/%D1%81hevrolet_PNG77.png"
-        width="640"
-        height="360"
-        controls
-        autoplay
-        preload="none"
-        data-setup='{ "techOrder": ["html5", "flash", "youtube"], 
-  "sources": [{ "type": "application/x-mpegURL", "src": "https://fta.rctiplus.id/live/eds/RCTI_2021/live_fta/RCTI_2021.m3u8"}]}'
-      ></video>
-
-      
-
-      <ul id="vidlink"> <button><a id="myLink" title="Click video"
-            href="http://jplayer.org/video/m4v/Incredibles_Teaser.m4v">Play .M4V</a></button>
+        player.qualityPickerPlugin();
         
-          <a id="myLink" title="Click video"            href="//assets3.ign.com/videos/zencoder/2016/06/15/640/7080c56a76e2b74ec8ecfe4c224441d4-500000-1466028542-w.mp4" >Play .MP4</a
-          >
-        </li>
-        <li>
-          <a
-            id="myLink"
-            title="Click video"
-            href="https://www.youtube.com/watch?v=kkGeOWYOFoA"
-            >Play Youtube</a
-          >
-        </li>
-        <li>
-          <a
-            id="myLink"
-            title="Click video"
-            href="https://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-manifest.mpd"
-            >Play Dash (.mpd)</a
+        player.src({
+            src: 'https://fta.rctiplus.id/live/eds/INEWS_2021/live_fta/INEWS_2021.m3u8',
+            type: 'application/x-mpegURL'
+        });
+
+        player.play();
+    </script>
+  </body>
+</html>
