@@ -1,42 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Video.js + hls.js</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"><!-- https://getbootstrap.com -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- https://getbootstrap.com -->
     <link href="https://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet"><!-- https://videojs.com -->
     <style type="text/css">
         .video-js {
-            font-size: 1rem;
+            font-size: 1,5rem;
         }
     </style>
-  </head>
-  <body class="bg-light">
-    <div class="container">
-        <div class="my-5 embed-responsive embed-responsive-16by9">
-            <video id="video" class="embed-responsive-item video-js vjs-default-skin" width="640" height="360" autoplay controls></video>
-        </div>
-        <div class="row justify-content-around align-items-center">
-            <a class="btn btn-primary bg-lg" href="https://github.com/halibegic/hls" target="blank">GitHub</a>
-        </div>
-    </div>
-    <script src="https://vjs.zencdn.net/5.19.2/video.js"></script><!-- https://videojs.com -->
-    <script src="https://halibegic.github.io/hls/js/hls.min.js?v=v0.9.1"></script><!-- https://github.com/video-dev/hls.js -->
-    <script src="https://halibegic.github.io/hls/js/videojs5-hlsjs-source-handler.min.js?v=0.3.1"></script><!-- https://github.com/streamroot/videojs-hlsjs-plugin -->
-    <script src="https://halibegic.github.io/hls/js/vjs-quality-picker.js?v=v0.0.2"></script><!-- https://github.com/streamroot/videojs-quality-picker -->
-    <script>
-        var player = videojs('video');
+</head>
 
-        player.qualityPickerPlugin();
-        
-        player.src({
-            src: 'http://rr.dens.tv/h/h18/index.m3u8',
-            type: 'application/x-mpegURL'
+<body>
+    <script src="https://vjs.zencdn.net/5.19.2/video.js"></script>
+    <script src="https://halibegic.github.io/hls/js/hls.min.js?v=v0.9.1"></script>
+    <script src="https://halibegic.github.io/hls/js/videojs5-hlsjs-source-handler.min.js?v=0.3.1"></script>
+    <script src="https://halibegic.github.io/hls/js/vjs-quality-picker.js?v=v0.0.2"></script>
+
+    <center><video id="video" class="embed-responsive-item video-js vjs-default-skin" width="440" height="360" autoplay
+        controls></video></center>
+
+    <script>
+        var player = videojs('video', {
         });
 
+        player.qualityPickerPlugin();
+        player.src({
+            src: 'http://rr2.dens.tv/s/s07/index3.m3u8',
+            type: 'application/x-mpegURL'
+        });
         player.play();
     </script>
-  </body>
+</body>
 </html>
