@@ -1,96 +1,233 @@
-const playbackUrl ="http://210.210.155.35/qwr9ew/s/s04/01.m3u8";
+<!DOCTYPE html>
+<html>
 
-// Initialize player
-(function () {
-    // Set up IVS playback tech and quality plugin
-    registerIVSTech(videojs);
-    registerIVSQualityPlugin(videojs);
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Sample Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.6.6/video-js.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.6.6/video.min.js"></script>
+    <script src="https://player.live-video.net/1.5.1/amazon-ivs-videojs-tech.min.js"></script>
+    <script src="https://player.live-video.net/1.5.1/amazon-ivs-quality-plugin.min.js"></script>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    // Initialize video.js player
-    const videoJSPlayer = videojs("amazon-ivs-videojs", {
-        techOrder: ["AmazonIVS"],
-        controlBar: {
-            playToggle: {replay: true}, // Hides the replay button for VOD
-            pictureInPictureToggle: false}, // Hides the PiP button
-            // playbackRates: [ 0.5, 0.75,1, 1.25, 1.5],
+        body {
+            background: #dedede;
+            overflow: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                Ubuntu, "Helvetica Neue", sans-serif;
+        }
 
-            html5: {
-                nativeAudioTracks: true,
-                nativeVideoTracks: true,
-                nativeTextTracks: true,
-                hls: {
-                    allowSeeksWithinUnsafeLiveWindow: true,
-                    overrideNative: !videojs.browser.IS_ANY_SAFARI,
-                },
-                vhs: {
-                    allowSeeksWithinUnsafeLiveWindow: true,
-                    overrideNative: !videojs.browser.IS_ANY_SAFARI,
-                    smoothQualityChange: true
-                },
-            },
-            // liveui: !videojs.browser.IS_ANY_SAFARI,
-            // liveTracker: !videojs.browser.IS_ANY_SAFARI,
-            // crossorigin: 'anonymous',
-    });
+        .app {
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
 
-    // Use the player API once the player instance's ready callback is fired
-    const readyCallback = function () {
-        // This executes after video.js is initialized and ready
-        window.videoJSPlayer = videoJSPlayer;
+        .video-wrapper {
+            width: 65%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.15);
+        }
 
-        // Get reference to Amazon IVS player
-        const ivsPlayer = videoJSPlayer.getIVSPlayer();
+        .live-pill {
+            height: 35px;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            color: #fff;
+            /* text-transform: uppercase; */
+            font-size: 25px;
+            padding: 0 2px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            border-radius: 3px;
+            z-index: 2;
+        }
 
-        // Show the "big play" button when the stream is paused
-        const videoContainerEl = document.querySelector("#amazon-ivs-videojs");
-        videoContainerEl.addEventListener("click", () => {
-            if (videoJSPlayer.paused()) {
-                videoContainerEl.classList.remove("vjs-has-started");
-            } else {
-                videoContainerEl.classList.add("vjs-has-started");
+        video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1rem;
+        }
+
+
+
+        /* .timed-metadata {
+  width: 100%;
+  height: 150px;
+  color: #4a4a4a;
+  font-family: monospace;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  flex-shrink: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+
+.metadata-line {
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 5px 0 0;
+  padding: 10px 5px 5px 10px;
+  word-break: break-all;
+  transition: all 0.15s ease-in-out;
+  animation: fadeIn 0.25s 1;
+}
+
+.metadata-line:last-child {
+  padding-bottom: 10px;
+}
+
+.timed-metadata__time {
+  min-width: 5rem;
+  font-weight: 300;
+}
+
+.timed-metadata__value {
+  font-weight: bold;
+} */
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0.4;
+                background: #ffbf60;
             }
-        });
 
-        // Logs low latency setting and latency value 5s after playback starts
-        const PlayerState = videoJSPlayer.getIVSEvents().PlayerState;
-        ivsPlayer.addEventListener(PlayerState.PLAYING, () => {
-            console.log("Player State - PLAYING");
-            setTimeout(() => {
-                console.log(
-                    `This stream is ${ivsPlayer.isLiveLowLatency() ? "" : "not "
-                    }playing in ultra low latency mode`
-                );
-                console.log(`Stream Latency: ${ivsPlayer.getLiveLatency()}s`);
-            }, 5000);
-        });
+            100% {
+                opacity: 1;
+                background: transparent;
+            }
+        }
 
-        // Log errors
-        const PlayerEventType = videoJSPlayer.getIVSEvents().PlayerEventType;
-        ivsPlayer.addEventListener(PlayerEventType.ERROR, (type, source) => {
-            console.warn("Player Event - ERROR: ", type, source);
-        });
+        @media (min-width: 320px) and (max-width: 767px) {
+            .video-wrapper {
+                width: 92%;
+                max-width: 92%;
+            }
+        }
+    </style>
+</head>
+</head>
 
-        // Log and display timed metadata
-        ivsPlayer.addEventListener(PlayerEventType.TEXT_METADATA_CUE, (cue) => {
-            const metadataText = cue.text;
-            const position = ivsPlayer.getPosition().toFixed(2);
-            console.log(
-                `Player Event - TEXT_METADATA_CUE: "${metadataText}". Observed ${position}s after playback started.`
-            );
-            addMetadataLine(position, metadataText);
-        });
+<body>
+    <div class="app">
+        <div class="video-wrapper">
+            <span class="live-pill">WIR TV</span>
+            <video id="amazon-ivs-videojs" class="video-js vjs-fluid vjs-big-play-centered" controls
+                autoplayplaysinline></video>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+    <script>
+        const playbackUrl = "http://210.210.155.35/qwr9ew/s/s04/01.m3u8";
 
-        // Enables manual quality selection plugin
-        videoJSPlayer.enableIVSQualityPlugin();
+        // Initialize player
+        (function () {
+            // Set up IVS playback tech and quality plugin
+            registerIVSTech(videojs);
+            registerIVSQualityPlugin(videojs);
 
-        // Set volume and play default stream
-        videoJSPlayer.volume(100);
-        videoJSPlayer.src(playbackUrl);
-    };
+            // Initialize video.js player
+            const videoJSPlayer = videojs("amazon-ivs-videojs", {
+                techOrder: ["AmazonIVS"],
+                controlBar: {
+                    playToggle: { replay: true }, // Hides the replay button for VOD
+                    pictureInPictureToggle: false
+                }, // Hides the PiP button
+                // playbackRates: [ 0.5, 0.75,1, 1.25, 1.5],
 
-    // Register ready callback
-    videoJSPlayer.ready(readyCallback);
-})();
+                html5: {
+                    nativeAudioTracks: true,
+                    nativeVideoTracks: true,
+                    nativeTextTracks: true,
+                    hls: {
+                        allowSeeksWithinUnsafeLiveWindow: true,
+                        overrideNative: !videojs.browser.IS_ANY_SAFARI,
+                    },
+                    vhs: {
+                        allowSeeksWithinUnsafeLiveWindow: true,
+                        overrideNative: !videojs.browser.IS_ANY_SAFARI,
+                        smoothQualityChange: true
+                    },
+                },
+                // liveui: !videojs.browser.IS_ANY_SAFARI,
+                // liveTracker: !videojs.browser.IS_ANY_SAFARI,
+                // crossorigin: 'anonymous',
+            });
+
+            // Use the player API once the player instance's ready callback is fired
+            const readyCallback = function () {
+                // This executes after video.js is initialized and ready
+                window.videoJSPlayer = videoJSPlayer;
+
+                // Get reference to Amazon IVS player
+                const ivsPlayer = videoJSPlayer.getIVSPlayer();
+
+                // Show the "big play" button when the stream is paused
+                const videoContainerEl = document.querySelector("#amazon-ivs-videojs");
+                videoContainerEl.addEventListener("click", () => {
+                    if (videoJSPlayer.paused()) {
+                        videoContainerEl.classList.remove("vjs-has-started");
+                    } else {
+                        videoContainerEl.classList.add("vjs-has-started");
+                    }
+                });
+
+                // Logs low latency setting and latency value 5s after playback starts
+                const PlayerState = videoJSPlayer.getIVSEvents().PlayerState;
+                ivsPlayer.addEventListener(PlayerState.PLAYING, () => {
+                    console.log("Player State - PLAYING");
+                    setTimeout(() => {
+                        console.log(
+                            `This stream is ${ivsPlayer.isLiveLowLatency() ? "" : "not "
+                            }playing in ultra low latency mode`
+                        );
+                        console.log(`Stream Latency: ${ivsPlayer.getLiveLatency()}s`);
+                    }, 5000);
+                });
+
+                // Log errors
+                const PlayerEventType = videoJSPlayer.getIVSEvents().PlayerEventType;
+                ivsPlayer.addEventListener(PlayerEventType.ERROR, (type, source) => {
+                    console.warn("Player Event - ERROR: ", type, source);
+                });
+
+                // Log and display timed metadata
+                ivsPlayer.addEventListener(PlayerEventType.TEXT_METADATA_CUE, (cue) => {
+                    const metadataText = cue.text;
+                    const position = ivsPlayer.getPosition().toFixed(2);
+                    console.log(
+                        `Player Event - TEXT_METADATA_CUE: "${metadataText}". Observed ${position}s after playback started.`
+                    );
+                    addMetadataLine(position, metadataText);
+                });
+
+                // Enables manual quality selection plugin
+                videoJSPlayer.enableIVSQualityPlugin();
+
+                // Set volume and play default stream
+                videoJSPlayer.volume(100);
+                videoJSPlayer.src(playbackUrl);
+            };
+
+            // Register ready callback
+            videoJSPlayer.ready(readyCallback);
+        })();
 
 // Metadata console
 // function addMetadataLine(metadataTime, metadataText) {
@@ -110,3 +247,7 @@ const playbackUrl ="http://210.210.155.35/qwr9ew/s/s04/01.m3u8";
 //         inline: "nearest"
 //     });
 // }
+    </script>
+</body>
+
+</html>
