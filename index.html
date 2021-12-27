@@ -1,53 +1,24 @@
-<html>
-<head>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.13.3/video-js.min.css" rel="stylesheet" />
-  <meta charset="utf-8">
-  <title>VideoJS DASH Playback Test - Issue #1064 </title>
-</head>
-<body>
-  <h1>VideoJS DASH Playback Test - Issue #1064 </h1>
-  <style>
-  </style>
-
-  <div id="video-container">
-
-  <video
-         id="dash"
-         class="video-js"
-         controls
-         preload="auto"
-         width="640"
-         height="268"
-         autoplay="true"
-         muted="muted"
-         >
-  </video>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.13.3/alt/video.debug.min.js"></script>
-<!-- Dash.js -->
-<script src="http://cdn.dashjs.org/latest/dash.all.debug.js"></script>
-
-<!-- videojs-contrib-dash script -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/4.1.0/videojs-dash.js"></script>-->
-
-<!--<script src="//cdn.dashjs.org/latest/dash.all.debug.js"></script>
-<script src="https://unpkg.com/videojs-contrib-dash/dist/videojs-dash.js"></script>-->
-
-<script>
-window.onload = function(){
-  var dash_player = videojs('dash', { autoplay: true, controls: true, liveui: true });
-  dash_player.src({ "type": "application/dash+xml", "src": "https://liveanevia.mncnow.id/live/eds/RCTI-Indonesia/sa_dash/RCTI-Indonesia.mpd"});
-  dash_player.play();
-
-  console.log('Dash Player Current Time', dash_player.currentTime());
-
-  dash_player.on('loadedmetadata', function() {
-    var dash_track = dash_player.textTracks()[0];
-    dash_track.on('cuechange', (e) => console.log(dash_track.activeCues));
-    dash_track.mode = 'disabled';
-  });
-}
-</script>
-</body>
-</html>
+    <link href='https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879/ui.css' rel='stylesheet' type='text/css'>
+    <script src='https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879/THEOplayer.js' type='text/javascript'></script>
+    <div id='the-o-player'></div>
+    <script>
+      var pWrp = document.querySelector( '#the-o-player' );
+      var player = document.createElement( 'div' );
+      player.className = 'video-js theoplayer-skin theo-seekbar-above-controls';
+      pWrp.appendChild( player );
+      theoplayer = new THEOplayer.Player( player, {
+        libraryLocation : 'https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879/',
+        ui: {
+          width: '100%',
+          fluid: true
+        }
+      });
+      
+      // HLS stream
+      theoplayer.source = {
+        sources : [{
+          src : "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8",
+          type : 'application/x-mpegurl'
+        }]
+      };
+    </script>
