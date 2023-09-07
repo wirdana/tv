@@ -1,0 +1,59 @@
+
+#EXTM3U
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be4f342858e9/295eb53a7aa04fbca2eeb58a3fab1f2f.png" , INDOSIAR 
+
+https://kusnadipepenk.github.io/campeign/indos.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be4d55ce58dd/7862982cb44d4e8bbc61a630beca66f6.png" ,SCTV 
+
+https://kusnadipepenk.github.io/campeign/sctv.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be5ef52a5904/441b76dc2d004adda2945df43736dd02.png" ,MNCTV
+
+https://kusnadipepenk.github.io/campeign/mnc.m3u8
+
+#EXTINF:-1 ,BALI TV
+
+
+
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be51092e58f1/9eec8914d4f74ee5a5f4d988c2965902.png" ,RCTI
+
+https://kusnadipepenk.github.io/campeign/rcti.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be51092e58f1/9eec8914d4f74ee5a5f4d988c2965902.png" ,RCTI 2
+
+https://av-live-cdn.mncnow.id/live/eds/rcti-2/sa_dash/rcti-2.mpd
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68585a0014401863437adf82243/08882f0d830a45f9800649ee6536e6e8.png" ,ANTV
+
+https://kusnadipepenk.github.io/campeign/antv.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be45631158d9/2165ad80418941528715202210307fb6.jpg" ,TRANS 7
+
+https://kusnadipepenk.github.io/campeign/trns7.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be43042758d8/36f75de0a5b543da8d17c46db9d44178.jpg" ,TRANS TV
+
+https://kusnadipepenk.github.io/campeign/trns.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68585a001440186343e1a562244/509958d1f3ef43f59d1ce189ed9a5296.png",TV ONE
+
+https://kusnadipepenk.github.io/campeign/tvone.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be4783ff58da/dd0e5afbeb2b4a7e802b4fbacce14991.png",METRO TV
+
+https://kusnadipepenk.github.io/campeign/metro.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c68574537fcd0174be52f87b58f2/ffb50ac11f9f42758882f58ff62273be.png", GLOBAL TV
+
+https://kusnadipepenk.github.io/campeign/global.m3u8
+
+#EXTINF:-1 tvg-logo="https://cdnjkt2.transvision.co.id:1001/image/web/channel/4028c685758bcfff01776c4ea3520a72/dfbeb8234b8d4794be107648d83c57ac.png", NET TV
+
+https://kusnadipepenk.github.io/campeign/netv.m3u8
+
+#EXTINF:-1 tvg-logo="https://img.uncyc.org/id/thumb/0/09/INews.png/300px-INews.png", INEWS TV
+
+https://kusnadipepenk.github.io/campeign/inews.m3u8
